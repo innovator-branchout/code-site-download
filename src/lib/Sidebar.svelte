@@ -41,8 +41,8 @@
 					</a>
 
 					<a
-						href="/lessons/website/lesson-1"
-						class:active={isActive('/lessons/website/lesson-1')}
+						href="/lessons/website/lesson_1"
+						class:active={isActive('/lessons/website/lesson_1')}
 					>
 						Lesson 1
 					</a>
@@ -59,8 +59,8 @@
 					</a>
 
 					<a
-						href="/lessons/python/lesson-1"
-						class:active={isActive('/lessons/python/lesson-1')}
+						href="/lessons/python/lesson_1"
+						class:active={isActive('/lessons/python/lesson_1')}
 					>
 						Lesson 1
 					</a>
