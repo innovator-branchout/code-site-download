@@ -4,8 +4,46 @@
 <script lang="ts">
     import CodeMirror from "svelte-codemirror-editor";
     import { python } from "@codemirror/lang-python";
+    import { onMount } from "svelte";
 
     let code = $state('print("Hello, World!")');
+    let output = $state("");
+    let isRunning = $state(false);
+    let pyodide = $state<any>(null);
+
+    onMount(async () => {
+		if (!(window as any).loadPyodide) {
+			const script = document.createElement("script");
+			script.src = "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js";
+			document.head.appendChild(script);
+			await new Promise((resolve) => (script.onload = resolve));
+		}
+		pyodide = await (window as any).loadPyodide();
+	});
+
+	async function runCode() {
+		if (!pyodide) return;
+		isRunning = true;
+		output = "Running...";
+
+		try {
+			// Redirect Python standard output to capture stdout
+			pyodide.runPython(`
+                import sys
+                import io
+                sys.stdout = io.StringIO()
+            `);
+
+			await pyodide.runPythonAsync(code);
+
+			const stdout = pyodide.runPython("sys.stdout.getvalue()");
+			output = stdout || "Program executed successfully with no output.";
+		} catch (err: any) {
+			output = `Error:\n${err.message}`;
+		} finally {
+			isRunning = false;
+		}
+	}
 </script>
 <main>
     <h1>Lesson 1 - Introduction</h1>
@@ -39,8 +77,21 @@
     <h2>Run your first script!</h2>
 
     <div class="code-editor">
-        <CodeMirror bind:value={code} lang={python()} theme="dark" />
+        <CodeMirror bind:value={code} lang={python()}/>
     </div>
+
+    <div class="controls">
+		<button onclick={runCode} disabled={!pyodide || isRunning}>
+			{isRunning ? "Running..." : pyodide ? "▶ Run Code" : "Loading Python..."}
+		</button>
+	</div>
+
+	{#if output}
+		<div class="console">
+			<h3>Output:</h3>
+			<pre>{output}</pre>
+		</div>
+	{/if}
 
 </main>
 
@@ -50,6 +101,9 @@
 		min-height: calc(100vh - 70px);
 		margin: 10 auto;
 		padding: 1rem 2rem;
+	}
+	.controls {
+		margin-top: 1rem;
 	}
     section {
         margin-top: 2rem;
@@ -67,4 +121,13 @@
         border-radius: 8px;
         overflow: hidden;
     }
+    .console {
+		margin-top: 1rem;
+		padding: 1rem;
+		background-color: #1e1e1e;
+		color: #00ff00;
+		border-radius: 6px;
+		font-family: monospace;
+	}
+
 </style>
