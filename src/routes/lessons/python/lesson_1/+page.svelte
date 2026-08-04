@@ -14,11 +14,14 @@
     onMount(async () => {
 		if (!(window as any).loadPyodide) {
 			const script = document.createElement("script");
-			script.src = "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js";
+			script.src = "/pyodide/pyodide.js";
 			document.head.appendChild(script);
 			await new Promise((resolve) => (script.onload = resolve));
 		}
-		pyodide = await (window as any).loadPyodide();
+
+		pyodide = await (window as any).loadPyodide({
+			indexURL: "/pyodide/"
+		});
 	});
 
 	async function runCode() {
