@@ -70,6 +70,12 @@
 					>
 						Lesson 2
 					</a>
+					<a
+						href="/lessons/python/lesson_4"
+						class:active={isActive('/lessons/python/lesson_4')}
+					>
+						Lesson 4
+					</a>
 				</details>
 
 			</div>
