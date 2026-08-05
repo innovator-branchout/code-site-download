@@ -22,6 +22,7 @@
 	},
 	"dependencies": {
 		"@codemirror/lang-python": "^6.2.1",
+		"pyodide": "^314.0.3",
 		"svelte-codemirror-editor": "^2.1.0"
 	},
 	"allowScripts": {
