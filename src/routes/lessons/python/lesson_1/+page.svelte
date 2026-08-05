@@ -136,34 +136,43 @@
         {
             id: 5,
             question: "What is the difference between an integer and a float?",
-            option: ["A float is stored in the floating dictionary in the sky, while an int is not", "A float contains decimal values, while an int does not", "An integer is a number, while a float is not", "A float contains multiple integers"],
+            options: ["A float is stored in the floating dictionary in the sky, while an int is not", "A float contains decimal values, while an int does not", "An integer is a number, while a float is not", "A float contains multiple integers"],
             answer: "A float contains decimal values, while an int does not"
         },
         {
             id: 6,
             question: " Solve the following math expression: ((5 + 1) * (6 / 3) + (3 - 1)**2) % 3",
-            option: ["1", "3", "11", "2"],
+            options: ["1", "3", "11", "2"],
             answer: "1"
         }
 	]
 
-	let currentIndex = 0;
-	let score = 0;
-	let selectedOption = null;
-	let isFinished = false;
+	let currentIndex = $state(0);
+	let score = $state(0);
+	let selectedOption = $state<string | null>(null);
+	let isFinished = $state(false);
+	let userAnswers = $state<Array<{ question: string; answer: string; userAnswer: string; isCorrect: boolean }>>([]);
 
 	function handleSelect(option) {
         selectedOption = option;
 	}
 
 	function nextQuestion() {
-        if (selectedOption == questions[currentIndex].answer){
+	    const currentQ = questions[currentIndex];
+		const isCorrect = currentQ.answer === selectedOption
+		if (isCorrect) {
             score += 1;
-        }
+		}
+		userAnswers.push({
+		    question: currentQ.question,
+			answer: currentQ.answer,
+			userAnswer: selectedOption,
+			isCorrect
+		})
 
         selectedOption = null;
 
-        if (currentIndex < questions.length -1) {
+        if (currentIndex < questions.length - 1) {
             currentIndex += 1;
         } else {
             isFinished = true;
@@ -175,6 +184,7 @@
         score = 0;
         selectedOption = null;
         isFinished = false;
+        userAnswers = [];
 	}
 </script>
 <main>
@@ -406,6 +416,27 @@
         {:else}
             <h3>Quiz Finished - Good job!</h3>
             <p>Your final score is {score} out of {questions.length}</p>
+
+            <div class="review">
+                <h4>Quiz Summary:</h4>
+                {#each userAnswers as item, index}
+                    <div class="result-card {item.isCorrect ? 'correct' : 'incorrect'}">
+                        <p class="review-question"><strong>Q{index + 1}:</strong> {item.question}</p>
+                        <p>
+                            Your Answer:
+                            <span class="badge {item.isCorrect ? 'bg-correct' : 'bg-incorrect'}">
+                                {item.userAnswer} {item.isCorrect ? '✓' : '✗'}
+                            </span>
+                        </p>
+
+                        {#if !item.isCorrect}
+                            <p class="correct-answer">
+                                Correct Answer: <strong>{item.answer}</strong>
+                            </p>
+                        {/if}
+                        </div>
+                {/each}
+            </div>
             <button class="try-again-btn" onclick={restartQuiz}>Try Again</button>
         {/if}
     </div>
@@ -471,18 +502,20 @@
         max-width: 700px;
     }
     .quiz-box {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 24px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-family: sans-serif;
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 24px;
+        background: #5f7470;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        font-family: sans-serif;
+        color: #e0e2db;
     }
     .question-text {
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: bold;
         margin-bottom: 16px;
+        color: #e0e2db;
     }
     .options-list {
         display: flex;
@@ -492,23 +525,22 @@
     }
     .option-btn {
         padding: 12px;
-        border: 1px solid #ccc;
-        background: #fff;
+        border: 1px solid;
+        background: #99A6A6;
         border-radius: 4px;
         cursor: pointer;
         text-align: left;
         font-size: 1rem;
     }
     .option-btn.selected {
-        background: #ff3e00;
+        background: #889696;
         color: #fff;
-        border-color: #ff3e00;
+        border-color: #889696;
     }
     .next-btn, .restart-btn {
         width: 100%;
         padding: 12px;
-        background: #222;
-        color: #fff;
+        background: #d2d4c8;
         border: none;
         border-radius: 4px;
         font-size: 1rem;
@@ -517,6 +549,29 @@
     .next-btn:disabled {
         background: #ccc;
         cursor: not-allowed;
+    }
+    .review {
+        text-align: left;
+    }
+    .result-card {
+        padding: 12px 16px;
+        border-radius: 6px;
+        border-left: 5px solid #ccc;
+        background-color: #d2d3c8;
+        color: #5f7470;
+        margin-bottom: 1rem;
+    }
+    .correct-answer {
+        color: #2e7d32;
+        font-size: 0.9rem;
+        margin-top: 4px;
+    }
+    .bg-correct {
+        color: #2e7d32;
+    }
+
+    .bg-incorrect {
+        color: #c62828;
     }
 
 </style>
