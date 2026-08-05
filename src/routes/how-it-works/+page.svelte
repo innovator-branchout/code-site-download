@@ -15,7 +15,7 @@
                     <br>
                     Try switching to the home screen then back like in the demonstration to the right
             </p>
-            <image src="src/routes/how-it-works/dummygif.png" class="switch-tab-demo" alt="demonstration gif">
+            <img src="/demonstration.png" class="switch-tab-demo" alt="Demonstration of switching between tabs"/>
         </div>
 
         <h3>Dropdowns</h3>
@@ -51,7 +51,7 @@
                 can learn more about programming! <br><br>
                 Follow the video to the right to open your first lesson!
             </p>
-            <image src="src/routes/how-it-works/dummygif.png" class="open-lesson-demo" alt="demonstration gif">
+            <img src="/demonstration.png" class="open-lesson-demo" alt="demonstration"/>
         </div>
     </section>
 </main>
