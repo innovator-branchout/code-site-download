@@ -15,7 +15,7 @@
                     <br>
                     Try switching to the home screen then back like in the demonstration to the right
             </p>
-            <img src="/demonstration.png" class="switch-tab-demo" alt="demonstration"/>
+            <img src="/demonstration.png" class="switch-tab-demo" alt="Demonstration of switching between tabs"/>
         </div>
 
         <h3>Dropdowns</h3>
