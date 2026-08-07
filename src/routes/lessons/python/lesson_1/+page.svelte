@@ -189,7 +189,7 @@
 </script>
 <main>
     <h1>Lesson 1 - Python Fundamentals</h1>
-    <p>Estimated Completion Time: __ min</p>
+    <p>Estimated Completion Time: 50-60 min</p>
     <p>In this lesson, we will go over the fundamentals of Python, allowing you to create your first script! </p>
 
     <p>By the end of this lesson, you will be able to:</p>
