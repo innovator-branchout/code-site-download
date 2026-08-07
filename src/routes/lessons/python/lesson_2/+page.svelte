@@ -257,7 +257,7 @@
 </script>
 <main>
     <h1>Lesson 2 - Loops & Conditional Statements </h1>
-    <p>Estimated Completion Time: __ min</p>
+    <p>Estimated Completion Time: 70-80 min</p>
     <p>In this lesson, we will learn how Python can make decisions and repeat tasks automatically.</p>
 
     <p>By the end of this lesson, you will be able to:</p>
