@@ -726,7 +726,7 @@ sys.stdout = io.StringIO()
 	main {
 		max-width: 1000px;
 		min-height: calc(100vh - 70px);
-		margin: 10 auto;
+		margin: 10px auto;
 		padding: 1rem 2rem;
 	}
 	.controls {
