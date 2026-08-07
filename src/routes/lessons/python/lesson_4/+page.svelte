@@ -249,7 +249,7 @@
 </script>
 <main>
     <h1>Lesson 4 - Functions & Libraries</h1>
-    <p>Estimated Completion Time: __ min</p>
+    <p>Estimated Completion Time: 65-75 min</p>
     <p>In this lesson, we will explore what python functions are and go over what packages and libraries are!</p>
 
     <p>By the end of this lesson, you will be able to:</p>
