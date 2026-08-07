@@ -67,10 +67,6 @@
 					<a href="/lessons/python/lesson_3" class:active={isActive('/lessons/python/lesson_3')}>
 						Lesson 3
 					</a>
-					<a
-						href="/lessons/python/lesson_4"
-						class:active={isActive('/lessons/python/lesson_4')}
-					>
 					<a href="/lessons/python/lesson_4" class:active={isActive('/lessons/python/lesson_4')}>
 						Lesson 4
 					</a>
