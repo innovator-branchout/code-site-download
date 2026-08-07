@@ -512,10 +512,12 @@
 							selectedAnswers[questionIndex] !== quizQuestion.answer
 						}
 					>
-						<legend>
-							<span>{questionIndex + 1}</span>
-							{quizQuestion.question}
-						</legend>
+						<legend class="visually-hidden">{quizQuestion.question}</legend>
+
+						<div class="question-heading">
+							<span class="question-number">{questionIndex + 1}</span>
+							<span>{quizQuestion.question}</span>
+						</div>
 
 						<div class="answers">
 							{#each quizQuestion.options as option, optionIndex}
@@ -737,8 +739,7 @@
 	.note,
 	.definition-card,
 	.mini-card,
-	.requirements,
-	fieldset {
+	.requirements {
 		margin-top: 1rem;
 		padding: 1rem;
 		border-radius: 18px;
@@ -765,19 +766,99 @@
 		background-color: #d9dcd6;
 	}
 
+	.quiz {
+		width: 100%;
+	}
+
+	.quiz fieldset {
+		min-width: 0;
+		width: 100%;
+		margin: 1.5rem 0;
+		padding: 1.5rem;
+		border: 1px solid #8c928a;
+		border-radius: 24px;
+		background-color: #d9dcd6;
+	}
+
+	.question-heading {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.7rem;
+		margin: 0 0 1.25rem;
+		font-size: 1.25rem;
+		font-weight: 500;
+		line-height: 1.35;
+	}
+
+	.question-number {
+		display: inline-flex;
+		flex: 0 0 auto;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background-color: #454a43;
+		color: white;
+		font-size: 1rem;
+		font-weight: bold;
+		line-height: 1;
+	}
+
 	.answers {
 		display: grid;
-		gap: 0.6rem;
-		margin-top: 1rem;
+		gap: 0.75rem;
+		margin: 0;
 	}
 
 	.answers label {
 		display: flex;
-		gap: 0.6rem;
-		padding: 0.7rem;
-		border-radius: 12px;
+		align-items: center;
+		gap: 1rem;
+		width: 100%;
+		min-height: 4.5rem;
+		margin: 0;
+		padding: 1rem 1.25rem;
+		border-radius: 18px;
 		background-color: #eef0ec;
 		cursor: pointer;
+		font-size: 1.1rem;
+		line-height: 1.35;
+	}
+
+	.answers label:hover {
+		background-color: #e5e8e3;
+	}
+
+	.answers input[type='radio'] {
+		flex: 0 0 auto;
+		width: 1.25rem;
+		height: 1.25rem;
+		margin: 0;
+		accent-color: #454a43;
+	}
+
+	.answers label span {
+		flex: 1;
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.feedback {
+		margin: 1rem 0 0;
+		padding: 0.75rem 1rem;
+		border-radius: 12px;
+		background-color: #eef0ec;
 	}
 
 	.quiz-actions {
@@ -822,11 +903,11 @@
 		font-size: 1.8rem;
 	}
 
-	fieldset.correct {
+	.quiz fieldset.correct {
 		border: 2px solid #517457;
 	}
 
-	fieldset.incorrect {
+	.quiz fieldset.incorrect {
 		border: 2px solid #965b5b;
 	}
 
@@ -885,6 +966,21 @@
 
 		.element-part {
 			margin-top: 1rem;
+		}
+
+		.quiz fieldset {
+			padding: 1rem;
+			border-radius: 18px;
+		}
+
+		.question-heading {
+			font-size: 1.05rem;
+		}
+
+		.answers label {
+			min-height: 4rem;
+			padding: 0.85rem 1rem;
+			font-size: 1rem;
 		}
 
 		.switch-tab-demo,

@@ -33,57 +33,52 @@
 				<details open>
 					<summary>Website</summary>
 
-					<a
-						href="/lessons/website"
-						class:active={isActive('/lessons/website')}
-					>
+					<a href="/lessons/website" class:active={isActive('/lessons/website')}>
 						Overview
 					</a>
 
-					<a
-						href="/lessons/website/lesson_1"
-						class:active={isActive('/lessons/website/lesson_1')}
-					>
+					<a href="/lessons/website/lesson_1" class:active={isActive('/lessons/website/lesson_1')}>
 						Lesson 1
+					</a>
+
+					<a href="/lessons/website/lesson_2" class:active={isActive('/lessons/website/lesson_2')}>
+						Lesson 2
+					</a>
+
+					<a href="/lessons/website/lesson_3" class:active={isActive('/lessons/website/lesson_3')}>
+						Lesson 3
 					</a>
 				</details>
 
 				<details open>
 					<summary>Python</summary>
 
-					<a
-						href="/lessons/python"
-						class:active={isActive('/lessons/python')}
-					>
+					<a href="/lessons/python" class:active={isActive('/lessons/python')}>
 						Overview
 					</a>
 
-					<a
-						href="/lessons/python/lesson_1"
-						class:active={isActive('/lessons/python/lesson_1')}
-					>
+					<a href="/lessons/python/lesson_1" class:active={isActive('/lessons/python/lesson_1')}>
 						Lesson 1
 					</a>
-					<a
-						href="/lessons/python/lesson_2"
-						class:active={isActive('/lessons/python/lesson_2')}
-					>
+
+					<a href="/lessons/python/lesson_2" class:active={isActive('/lessons/python/lesson_2')}>
 						Lesson 2
 					</a>
-					<a
-						href="/lessons/python/lesson_3"
-						class:active={isActive('/lessons/python/lesson_3')}
-					>
+					<a href="/lessons/python/lesson_3" class:active={isActive('/lessons/python/lesson_3')}>
 						Lesson 3
 					</a>
 					<a
 						href="/lessons/python/lesson_4"
 						class:active={isActive('/lessons/python/lesson_4')}
 					>
+					<a href="/lessons/python/lesson_4" class:active={isActive('/lessons/python/lesson_4')}>
 						Lesson 4
 					</a>
-				</details>
 
+					<a href="/lessons/python/lesson_5" class:active={isActive('/lessons/python/lesson_5')}>
+						Lesson 5
+					</a>
+				</details>
 			</div>
 		</details>
 
