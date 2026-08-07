@@ -218,10 +218,10 @@
         <p>Usually, you need to set-up an online workspace before running scripts.</p>
         <ol>
             <li>
-                Create a folder called **my-first-script**. This will store your first project
+                Create a folder called <code style="font-family: 'Courier New'">my-first-script</code>. This will store your first project
             </li>
             <li>
-                Within that folder, create a file called **script.py**
+                Within that folder, create a file called <code style="font-family: 'Courier New'">script.py</code>
                 <ol class="letter-list">
                     <li>All python files must end with .py, otherwise it won’t be recognized as a python file.</li>
                     <li>The text before .py is the file's unique identifier, make sure you choose a useful name you’ll remember!</li>
@@ -250,7 +250,7 @@
 		</div>
 	{/if}
 	<p>
-        When run, the text “Hello World” will be outputted to the console below. The **script.py** file may be run using the following command on the terminal: <br>
+        When run, the text “Hello World” will be outputted to the console below. The <code style="font-family: 'Courier New'">script.py</code> file may be run using the following command on the terminal: <br>
     </p>
 
     <pre><code>
